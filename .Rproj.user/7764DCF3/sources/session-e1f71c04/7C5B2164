@@ -1,0 +1,32 @@
+{
+    "id": "7C5B2164",
+    "path": "~/projects/personal/workbook/r.qmd",
+    "project_path": "r.qmd",
+    "type": "quarto_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1710446431791.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "rmdVisualMode": "false",
+        "rmdVisualWrapConfigured": "true",
+        "source_window_id": "",
+        "Source": "Source",
+        "docOutlineVisible": "1",
+        "rmdVisualCollapsedChunks": "",
+        "cursorPosition": "129,0",
+        "scrollLine": "109",
+        "rmdVisualModeLocation": "213:161.81817626953125",
+        "marks": "<:146,0\n>:146,0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1710446436,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1710446436929,
+    "read_only": false,
+    "read_only_alternatives": []
+}

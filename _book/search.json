@@ -1,0 +1,79 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Workbook",
+    "section": "",
+    "text": "Preface"
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is the awesome introduction"
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "r.html#working-with-rasters",
+    "href": "r.html#working-with-rasters",
+    "title": "2  R",
+    "section": "2.1 Working with rasters",
+    "text": "2.1 Working with rasters\n\n2.1.1 The data\nFor learning purposes I downloaded data on the sun duration from the **CMSAF for europe in 2020 to October 2023*. The data can be found after login here. It’s the SARAH-3 product. It’s one NetCDF per Month. So it could also just be a tif.\n\n\nCode\ndir_data_europe = here(\"data_raw/raster/sun_europe\")\nfiles_to_data_europe = dir(dir_data_europe, \".*\\\\.nc$\", full.names = T)\n\n\nAlso, in order to see how things are working with a NetCDF with many timestamps, I include a raster for Austria for the sum of Sun Duration. It is one single NetCDF for 2023, but includes all the months up to October for 2023.\n\n\nCode\ndir_data_austria = here(\"data_raw/raster/sun_austria\")\nfile_to_data_austria = dir(dir_data_austria, \".*\\\\.nc$\", full.names = T)\n\n\nThe outline of Austria\n\n\nCode\nau = rajudas::oe\n\n\n\n\n2.1.2 Terra\n\nThe docs\n\n\n2.1.2.1 SpatRaster-class\nFrom the docs:\nA SpatRaster represents multi-layer (variable) raster data. A SpatRaster object stores a number of fundamental parameters that describe it. These include the number of columns and rows, the coordinates of its spatial extent (‘bounding box’), and the coordinate reference system (the ‘map projection’). In addition, a SpatRaster can store information about the file(s) in which the raster cell values are stored (if there are such files) — as raster cell values can also be held in memory.\n\n2.1.2.1.1 Reading a single raster\nLets use the data on monthly Sun duration over Austria\n\n\nCode\nraster_austria_terra = terra::rast(file_to_data_austria)\n\n\n\n2.1.2.1.1.1 Get some attributes\n\n# does it have values\nhasValues(raster_austria_terra)\n\n[1] TRUE\n\n# what is the resolution\nres(raster_austria_terra)\n\n[1] 1000 1000\n\n# the dimensions\ndim(raster_austria_terra)\n\n[1] 329 584  11\n\n# the number of layers\nterra::nlyr(raster_austria_terra)\n\n[1] 11\n\n## extract one layer (one month - Feb)\nfeb = raster_austria_terra[[2]]\n\nplot(feb, main = \"Sun over Austrian in Feb 2023\")\n\n\n\n\n\n\n\n2.1.2.1.2 Multi-Layer Statistics\nWhen reading a netcdf you often end up with many layers (which you can check with the nlyr-function)\n\n2.1.2.1.2.1 Mean, max… of multiple Raster\nThere are several options of summarising data over the layers. They always return a SpatRaster-Object. Meaning the output will have the same dimension and resolution as any of the layer, but will be just a single layer!\n\n\nCode\n# mean 1: the normal mean-function\nm1 = terra::mean(raster_austria_terra)\n\n# the terra app-function\nm2 = terra::app(raster_austria_terra, \"mean\")\n\nterra::all.equal(m1, m2)\n\n\n[1] TRUE\n\n\n\n\n2.1.2.1.2.2 For each Pixel find the month in which it was the highest\n\n\nCode\nr = rast(\"au.tif\")\nwhen_max_sun = terra::app(r, which.max)\nvalues(when_max_sun) = month.name[values(when_max_sun)]\nplot(when_max_sun)\nplot(oe, add = T)\n\n\n\n\n\n\n\n\n\n\n2.1.3 Stars\n\n2.1.3.1 Reading a single raster\n\n\nCode\nraster_austria_stars = stars::read_ncdf(file_to_data_austria)\n\n\nno 'var' specified, using SA\n\n\nother available variables:\n lambert_conformal_conic, lat, lon, time, x, y\n\n\nWill return stars object with 2113496 cells.\n\n\nWarning in getGeoDatum(gm): Didn't find a longitude of prime meridian for\ndatum, assuming 0.\n\n\nWarning in getGeoDatum(gm): Didn't find a semi major axis for datum, assuming\nWGS84 6378137.0 meters\n\n\nWarning in getGeoDatum(gm): Didn't find an inverse flattening value, assuming\nWGS84 298.257223563\n\n\nCode\nindex_max = function(x) ifelse(all(is.na(x)), NA, which.max(x))\nwhen_max_sun_stars = st_apply(raster_austria_stars, c(\"x\", \"y\"), index_max)\nplot(when_max_sun_stars, col = c(\"lightgreen\", \"brown\", \"white\", \"darkgreen\"))\nplot(oe %&gt;% st_transform(st_crs(when_max_sun_stars)), add = T)"
+  },
+  {
+    "objectID": "r.html",
+    "href": "r.html",
+    "title": "2  R",
+    "section": "",
+    "text": "3 PURRR"
+  },
+  {
+    "objectID": "r.html#iterate-over-columns-of-a-dataframe",
+    "href": "r.html#iterate-over-columns-of-a-dataframe",
+    "title": "2  R",
+    "section": "3.1 Iterate over columns of a dataframe",
+    "text": "3.1 Iterate over columns of a dataframe\n\n\nCode\ndf = data.frame(a = c(1, 2, 3),\n                b = c(4, 5, 6)) %&gt;%\n  rowwise() %&gt;%\n  mutate(s = sum(a, b))\n\n\n# the naming of the function arguments is important. They have to match the names of the cols of the df!!\nres = pmap(df, function(a,b,s){\n  paste0(a, \" + \", b, \" = \", s)\n})\n\nprint(res)\n\n\n[[1]]\n[1] \"1 + 4 = 5\"\n\n[[2]]\n[1] \"2 + 5 = 7\"\n\n[[3]]\n[1] \"3 + 6 = 9\"\n\n\nCode\n# you can also unname the dataframe|tibble and name them anyhow"
+  },
+  {
+    "objectID": "dataviz.html#chartselection",
+    "href": "dataviz.html#chartselection",
+    "title": "1  Dataviz",
+    "section": "1.1 Chartselection",
+    "text": "1.1 Chartselection\n\nOne good graph is better than 7 bad ones\nIf you have to include more graphs: Better build them up gradually than showing 7 completely different ones\nUse differnt types of graphs (if possible). If you go home and say “oh do you remember that bar-chart?” It’s hard if you only had bar-graphs… Also look here"
+  },
+  {
+    "objectID": "dataviz.html#use-words",
+    "href": "dataviz.html#use-words",
+    "title": "1  Dataviz",
+    "section": "1.2 Use Words",
+    "text": "1.2 Use Words\n\nLook for Amandy Cox’s talk on the Datawrapper-Conf (Unwrapped).\nUse verbs! The title in a datawrapper should use verbs!"
+  },
+  {
+    "objectID": "dataviz.html#use-hierachy",
+    "href": "dataviz.html#use-hierachy",
+    "title": "1  Dataviz",
+    "section": "1.3 Use Hierachy",
+    "text": "1.3 Use Hierachy"
+  },
+  {
+    "objectID": "dataviz.html#links",
+    "href": "dataviz.html#links",
+    "title": "1  Dataviz",
+    "section": "1.4 Links",
+    "text": "1.4 Links\n\nDatawrapper’s Dataviz DO’s and DONT’s"
+  }
+]

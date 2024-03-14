@@ -1,0 +1,12 @@
+"0","df %>% setNames(NULL)
+"
+"1","[1m[33mError[39m in `new_tibble()`:[22m
+[38;5;239m[33m![38;5;239m `names` must not be `NULL`.[39m
+Backtrace:
+[90m 1. [39mdf %>% setNames(NULL)
+[90m 2. [39m[1mstats[22m::setNames(., NULL)
+[90m 4. [39m[1mdplyr[22m:::`names<-.rowwise_df`(`*tmp*`, value = nm)
+[90m 5. [39mdplyr:::rowwise_df(data, group_vars)
+[90m 7. [39mdplyr:::as_tibble.rowwise_df(data)
+[90m 8. [39m[1m[94mtibble::new_tibble([39m[22mvec_data(x), nrow = nrow(x)[1m[94m)[39m[22m
+"

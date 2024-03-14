@@ -1,0 +1,156 @@
+# R
+
+Loading packages
+
+```{r}
+#| message: false
+library(tidyverse)
+library(here)
+library(glue)
+library(sf)
+library(stars)
+library(terra)
+library(rajudas)
+library(jsonlite)
+```
+
+## Working with rasters
+
+### The data
+
+For learning purposes I downloaded data on the sun duration from the **CMSAF for europe in 2020 to October 2023*. The data can be found after login [here](https://wui.cmsaf.eu/safira/action/viewProduktSearch). It's the SARAH-3 product. It's one NetCDF per Month. So it could also just be a tif. 
+
+```{r}
+dir_data_europe = here("data_raw/raster/sun_europe")
+files_to_data_europe = dir(dir_data_europe, ".*\\.nc$", full.names = T)
+```
+
+Also, in order to see how things are working with a NetCDF with many timestamps, I include a **raster for Austria for the sum of Sun Duration**. It is one single NetCDF for 2023, but includes all the months up to October for 2023.
+
+```{r}
+dir_data_austria = here("data_raw/raster/sun_austria")
+file_to_data_austria = dir(dir_data_austria, ".*\\.nc$", full.names = T)
+```
+
+The outline of Austria
+```{r}
+au = rajudas::oe
+```
+
+
+### Terra
+
+-   [The docs](https://rspatial.org/pkg/2-classes.html)
+
+#### `SpatRaster`-class
+
+From [the docs](https://rspatial.org/pkg/2-classes.html):
+
+*A SpatRaster represents multi-layer (variable) raster data. A SpatRaster object stores a number of fundamental parameters that describe it. These include the number of columns and rows, the coordinates of its spatial extent ('bounding box'), and the coordinate reference system (the 'map projection'). In addition, a SpatRaster can store information about the file(s) in which the raster cell values are stored (if there are such files) --- as raster cell values can also be held in memory.*
+
+##### Reading a single raster
+
+Lets use the data on monthly Sun duration over Austria
+
+```{r}
+#| message: false
+raster_austria_terra = terra::rast(file_to_data_austria)
+```
+
+###### Get some attributes
+
+```{r}
+#| code-fold: false
+# does it have values
+hasValues(raster_austria_terra)
+
+# what is the resolution
+res(raster_austria_terra)
+
+# the dimensions
+dim(raster_austria_terra)
+
+# the number of layers
+terra::nlyr(raster_austria_terra)
+
+## extract one layer (one month - Feb)
+feb = raster_austria_terra[[2]]
+
+plot(feb, main = "Sun over Austrian in Feb 2023")
+```
+
+
+##### Multi-Layer Statistics
+
+When reading a netcdf you often end up with many layers (which you can check with the `nlyr`-function)
+
+###### Mean, max... of multiple Raster
+
+There are several options of summarising data over the layers. They always return a `SpatRaster`-Object. Meaning the output will have the same dimension and resolution as any of the layer, but will be just a single layer!
+
+```{r}
+# mean 1: the normal mean-function
+m1 = terra::mean(raster_austria_terra)
+
+# the terra app-function
+m2 = terra::app(raster_austria_terra, "mean")
+
+terra::all.equal(m1, m2)
+```
+
+###### For each Pixel find the month in which it was the highest
+
+```{r}
+r = rast("au.tif")
+when_max_sun = terra::app(r, which.max)
+values(when_max_sun) = month.name[values(when_max_sun)]
+plot(when_max_sun)
+plot(oe, add = T)
+```
+
+
+
+### Stars
+
+#### Reading a single raster
+
+```{r}
+raster_austria_stars = stars::read_ncdf(file_to_data_austria)
+index_max = function(x) ifelse(all(is.na(x)), NA, which.max(x))
+when_max_sun_stars = st_apply(raster_austria_stars, c("x", "y"), index_max)
+plot(when_max_sun_stars, col = c("lightgreen", "brown", "white", "darkgreen"))
+plot(oe %>% st_transform(st_crs(when_max_sun_stars)), add = T)
+```
+
+
+
+
+## PURRR
+
+### Iterate over columns of a dataframe
+
+```{r}
+df = data.frame(a = c(1, 2, 3),
+                b = c(4, 5, 6)) %>%
+  rowwise() %>%
+  mutate(s = sum(a, b))
+
+
+# the naming of the function arguments is important. They have to match the names of the cols of the df!!
+res = pmap(df, function(a,b,s){
+  paste0(a, " + ", b, " = ", s)
+})
+
+print(res)
+
+# you can also unname the dataframe|tibble and name them anyhow
+```
+
+
+
+
+
+
+
+
+
