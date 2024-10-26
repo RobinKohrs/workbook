@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Workbook - 2&nbsp; R</title>
+<title>Workbook - 3&nbsp; R Geo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./rgeo.html" rel="next">
-<link href="./dataviz.html" rel="prev">
+<link href="./qgis.html" rel="next">
+<link href="./r.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./r.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./rgeo.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Geo</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -147,13 +147,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./r.html" class="sidebar-item-text sidebar-link active">
+  <a href="./r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rgeo.html" class="sidebar-item-text sidebar-link">
+  <a href="./rgeo.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Geo</span></span></a>
   </div>
 </li>
@@ -191,32 +191,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#working-with-rasters" id="toc-working-with-rasters" class="nav-link active" data-scroll-target="#working-with-rasters"><span class="header-section-number">2.1</span> Working with rasters</a>
+  <li><a href="#working-with-rasters" id="toc-working-with-rasters" class="nav-link active" data-scroll-target="#working-with-rasters"><span class="header-section-number">3.1</span> Working with rasters</a>
   <ul>
-  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data"><span class="header-section-number">2.1.1</span> The data</a></li>
-  <li><a href="#terra" id="toc-terra" class="nav-link" data-scroll-target="#terra"><span class="header-section-number">2.1.2</span> Terra</a>
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data"><span class="header-section-number">3.1.1</span> The data</a></li>
+  <li><a href="#terra" id="toc-terra" class="nav-link" data-scroll-target="#terra"><span class="header-section-number">3.1.2</span> Terra</a>
   <ul>
-  <li><a href="#spatraster-class" id="toc-spatraster-class" class="nav-link" data-scroll-target="#spatraster-class"><span class="header-section-number">2.1.2.1</span> <code>SpatRaster</code>-class</a>
+  <li><a href="#spatraster-class" id="toc-spatraster-class" class="nav-link" data-scroll-target="#spatraster-class"><span class="header-section-number">3.1.2.1</span> <code>SpatRaster</code>-class</a>
   <ul>
-  <li><a href="#reading-a-single-raster" id="toc-reading-a-single-raster" class="nav-link" data-scroll-target="#reading-a-single-raster"><span class="header-section-number">2.1.2.1.1</span> Reading a single raster</a>
+  <li><a href="#reading-a-single-raster" id="toc-reading-a-single-raster" class="nav-link" data-scroll-target="#reading-a-single-raster"><span class="header-section-number">3.1.2.1.1</span> Reading a single raster</a>
   <ul class="collapse">
-  <li><a href="#get-some-attributes" id="toc-get-some-attributes" class="nav-link" data-scroll-target="#get-some-attributes"><span class="header-section-number">2.1.2.1.1.1</span> Get some attributes</a></li>
+  <li><a href="#get-some-attributes" id="toc-get-some-attributes" class="nav-link" data-scroll-target="#get-some-attributes"><span class="header-section-number">3.1.2.1.1.1</span> Get some attributes</a></li>
   </ul></li>
-  <li><a href="#multi-layer-statistics" id="toc-multi-layer-statistics" class="nav-link" data-scroll-target="#multi-layer-statistics"><span class="header-section-number">2.1.2.1.2</span> Multi-Layer Statistics</a>
+  <li><a href="#multi-layer-statistics" id="toc-multi-layer-statistics" class="nav-link" data-scroll-target="#multi-layer-statistics"><span class="header-section-number">3.1.2.1.2</span> Multi-Layer Statistics</a>
   <ul class="collapse">
-  <li><a href="#mean-max-of-multiple-raster" id="toc-mean-max-of-multiple-raster" class="nav-link" data-scroll-target="#mean-max-of-multiple-raster"><span class="header-section-number">2.1.2.1.2.1</span> Mean, max… of multiple Raster</a></li>
-  <li><a href="#for-each-pixel-find-the-month-in-which-it-was-the-highest" id="toc-for-each-pixel-find-the-month-in-which-it-was-the-highest" class="nav-link" data-scroll-target="#for-each-pixel-find-the-month-in-which-it-was-the-highest"><span class="header-section-number">2.1.2.1.2.2</span> For each Pixel find the month in which it was the highest</a></li>
+  <li><a href="#mean-max-of-multiple-raster" id="toc-mean-max-of-multiple-raster" class="nav-link" data-scroll-target="#mean-max-of-multiple-raster"><span class="header-section-number">3.1.2.1.2.1</span> Mean, max… of multiple Raster</a></li>
+  <li><a href="#for-each-pixel-find-the-month-in-which-it-was-the-highest" id="toc-for-each-pixel-find-the-month-in-which-it-was-the-highest" class="nav-link" data-scroll-target="#for-each-pixel-find-the-month-in-which-it-was-the-highest"><span class="header-section-number">3.1.2.1.2.2</span> For each Pixel find the month in which it was the highest</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
-  <li><a href="#stars" id="toc-stars" class="nav-link" data-scroll-target="#stars"><span class="header-section-number">2.1.3</span> Stars</a>
+  <li><a href="#stars" id="toc-stars" class="nav-link" data-scroll-target="#stars"><span class="header-section-number">3.1.3</span> Stars</a>
   <ul>
-  <li><a href="#reading-a-single-raster-1" id="toc-reading-a-single-raster-1" class="nav-link" data-scroll-target="#reading-a-single-raster-1"><span class="header-section-number">2.1.3.1</span> Reading a single raster</a></li>
+  <li><a href="#reading-a-single-raster-1" id="toc-reading-a-single-raster-1" class="nav-link" data-scroll-target="#reading-a-single-raster-1"><span class="header-section-number">3.1.3.1</span> Reading a single raster</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#purrr" id="toc-purrr" class="nav-link" data-scroll-target="#purrr"><span class="header-section-number">2.2</span> PURRR</a>
-  <ul>
-  <li><a href="#iterate-over-columns-of-a-dataframe" id="toc-iterate-over-columns-of-a-dataframe" class="nav-link" data-scroll-target="#iterate-over-columns-of-a-dataframe"><span class="header-section-number">2.2.1</span> Iterate over columns of a dataframe</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -226,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Gesamten Code zeigen</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Gesamten Code verbergen</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Quellcode anzeigen</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Geo</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Gesamten Code zeigen</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Gesamten Code verbergen</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Quellcode anzeigen</a></li></ul></div></div>
 </div>
 
 
@@ -241,7 +237,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Loading packages</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -255,10 +250,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="working-with-rasters" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="working-with-rasters"><span class="header-section-number">2.1</span> Working with rasters</h2>
-<section id="the-data" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="the-data"><span class="header-section-number">2.1.1</span> The data</h3>
+<p>Loading packages</p>
+<section id="working-with-rasters" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="working-with-rasters"><span class="header-section-number">3.1</span> Working with rasters</h2>
+<section id="the-data" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="the-data"><span class="header-section-number">3.1.1</span> The data</h3>
 <p>For learning purposes I downloaded data on the sun duration from the **CMSAF for europe in 2020 to October 2023*. The data can be found after login <a href="https://wui.cmsaf.eu/safira/action/viewProduktSearch">here</a>. It’s the SARAH-3 product. It’s one NetCDF per Month. So it could also just be a tif.</p>
 <div class="cell">
 <details>
@@ -283,17 +279,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="terra" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="terra"><span class="header-section-number">2.1.2</span> Terra</h3>
+<section id="terra" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="terra"><span class="header-section-number">3.1.2</span> Terra</h3>
 <ul>
 <li><a href="https://rspatial.org/pkg/2-classes.html">The docs</a></li>
 </ul>
-<section id="spatraster-class" class="level4" data-number="2.1.2.1">
-<h4 data-number="2.1.2.1" class="anchored" data-anchor-id="spatraster-class"><span class="header-section-number">2.1.2.1</span> <code>SpatRaster</code>-class</h4>
+<section id="spatraster-class" class="level4" data-number="3.1.2.1">
+<h4 data-number="3.1.2.1" class="anchored" data-anchor-id="spatraster-class"><span class="header-section-number">3.1.2.1</span> <code>SpatRaster</code>-class</h4>
 <p>From <a href="https://rspatial.org/pkg/2-classes.html">the docs</a>:</p>
 <p><em>A SpatRaster represents multi-layer (variable) raster data. A SpatRaster object stores a number of fundamental parameters that describe it. These include the number of columns and rows, the coordinates of its spatial extent (‘bounding box’), and the coordinate reference system (the ‘map projection’). In addition, a SpatRaster can store information about the file(s) in which the raster cell values are stored (if there are such files) — as raster cell values can also be held in memory.</em></p>
-<section id="reading-a-single-raster" class="level5" data-number="2.1.2.1.1">
-<h5 data-number="2.1.2.1.1" class="anchored" data-anchor-id="reading-a-single-raster"><span class="header-section-number">2.1.2.1.1</span> Reading a single raster</h5>
+<section id="reading-a-single-raster" class="level5" data-number="3.1.2.1.1">
+<h5 data-number="3.1.2.1.1" class="anchored" data-anchor-id="reading-a-single-raster"><span class="header-section-number">3.1.2.1.1</span> Reading a single raster</h5>
 <p>Lets use the data on monthly Sun duration over Austria</p>
 <div class="cell">
 <details>
@@ -301,8 +297,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>raster_austria_terra <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">rast</span>(file_to_data_austria)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="get-some-attributes" class="level6" data-number="2.1.2.1.1.1">
-<h6 data-number="2.1.2.1.1.1" class="anchored" data-anchor-id="get-some-attributes"><span class="header-section-number">2.1.2.1.1.1</span> Get some attributes</h6>
+<section id="get-some-attributes" class="level6" data-number="3.1.2.1.1.1">
+<h6 data-number="3.1.2.1.1.1" class="anchored" data-anchor-id="get-some-attributes"><span class="header-section-number">3.1.2.1.1.1</span> Get some attributes</h6>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># does it have values</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hasValues</span>(raster_austria_terra)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -329,16 +325,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(feb, <span class="at">main =</span> <span class="st">"Sun over Austrian in Feb 2023"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="r_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<p><img src="rgeo_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 </section>
-<section id="multi-layer-statistics" class="level5" data-number="2.1.2.1.2">
-<h5 data-number="2.1.2.1.2" class="anchored" data-anchor-id="multi-layer-statistics"><span class="header-section-number">2.1.2.1.2</span> Multi-Layer Statistics</h5>
+<section id="multi-layer-statistics" class="level5" data-number="3.1.2.1.2">
+<h5 data-number="3.1.2.1.2" class="anchored" data-anchor-id="multi-layer-statistics"><span class="header-section-number">3.1.2.1.2</span> Multi-Layer Statistics</h5>
 <p>When reading a netcdf you often end up with many layers (which you can check with the <code>nlyr</code>-function)</p>
-<section id="mean-max-of-multiple-raster" class="level6" data-number="2.1.2.1.2.1">
-<h6 data-number="2.1.2.1.2.1" class="anchored" data-anchor-id="mean-max-of-multiple-raster"><span class="header-section-number">2.1.2.1.2.1</span> Mean, max… of multiple Raster</h6>
+<section id="mean-max-of-multiple-raster" class="level6" data-number="3.1.2.1.2.1">
+<h6 data-number="3.1.2.1.2.1" class="anchored" data-anchor-id="mean-max-of-multiple-raster"><span class="header-section-number">3.1.2.1.2.1</span> Mean, max… of multiple Raster</h6>
 <p>There are several options of summarising data over the layers. They always return a <code>SpatRaster</code>-Object. Meaning the output will have the same dimension and resolution as any of the layer, but will be just a single layer!</p>
 <div class="cell">
 <details>
@@ -356,8 +352,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="for-each-pixel-find-the-month-in-which-it-was-the-highest" class="level6" data-number="2.1.2.1.2.2">
-<h6 data-number="2.1.2.1.2.2" class="anchored" data-anchor-id="for-each-pixel-find-the-month-in-which-it-was-the-highest"><span class="header-section-number">2.1.2.1.2.2</span> For each Pixel find the month in which it was the highest</h6>
+<section id="for-each-pixel-find-the-month-in-which-it-was-the-highest" class="level6" data-number="3.1.2.1.2.2">
+<h6 data-number="3.1.2.1.2.2" class="anchored" data-anchor-id="for-each-pixel-find-the-month-in-which-it-was-the-highest"><span class="header-section-number">3.1.2.1.2.2</span> For each Pixel find the month in which it was the highest</h6>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -368,17 +364,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(oe, <span class="at">add =</span> T)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="r_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="rgeo_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 </section>
 </section>
 </section>
-<section id="stars" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="stars"><span class="header-section-number">2.1.3</span> Stars</h3>
-<section id="reading-a-single-raster-1" class="level4" data-number="2.1.3.1">
-<h4 data-number="2.1.3.1" class="anchored" data-anchor-id="reading-a-single-raster-1"><span class="header-section-number">2.1.3.1</span> Reading a single raster</h4>
+<section id="stars" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="stars"><span class="header-section-number">3.1.3</span> Stars</h3>
+<section id="reading-a-single-raster-1" class="level4" data-number="3.1.3.1">
+<h4 data-number="3.1.3.1" class="anchored" data-anchor-id="reading-a-single-raster-1"><span class="header-section-number">3.1.3.1</span> Reading a single raster</h4>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -414,51 +410,14 @@ WGS84 298.257223563</code></pre>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(oe <span class="sc">%&gt;%</span> <span class="fu">st_transform</span>(<span class="fu">st_crs</span>(when_max_sun_stars)), <span class="at">add =</span> T)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="r_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="rgeo_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
-</div>
-</section>
-</section>
-</section>
-<section id="purrr" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="purrr"><span class="header-section-number">2.2</span> PURRR</h2>
-<section id="iterate-over-columns-of-a-dataframe" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="iterate-over-columns-of-a-dataframe"><span class="header-section-number">2.2.1</span> Iterate over columns of a dataframe</h3>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">b =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">s =</span> <span class="fu">sum</span>(a, b))</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the naming of the function arguments is important. They have to match the names of the cols of the df!!</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>res <span class="ot">=</span> <span class="fu">pmap</span>(df, <span class="cf">function</span>(a,b,s){</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(a, <span class="st">" + "</span>, b, <span class="st">" = "</span>, s)</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(res)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] "1 + 4 = 5"
-
-[[2]]
-[1] "2 + 5 = 7"
-
-[[3]]
-[1] "3 + 6 = 9"</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also unname the dataframe|tibble and name them anyhow</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 
 
 <!-- -->
 
+</section>
 </section>
 </section>
 
@@ -749,164 +708,141 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./dataviz.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Dataviz</span></span>
+      <a href="./r.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./rgeo.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Geo</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./qgis.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">QGIS</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Quellcode</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb29" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># R</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>Loading packages</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rajudas)</span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working with rasters</span></span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="fu">### The data</span></span>
-<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>For learning purposes I downloaded data on the sun duration from the **CMSAF for europe in 2020 to October 2023*. The data can be found after login <span class="co">[</span><span class="ot">here</span><span class="co">](https://wui.cmsaf.eu/safira/action/viewProduktSearch)</span>. It's the SARAH-3 product. It's one NetCDF per Month. So it could also just be a tif. </span>
-<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>dir_data_europe <span class="ot">=</span> <span class="fu">here</span>(<span class="st">"data_raw/raster/sun_europe"</span>)</span>
-<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>files_to_data_europe <span class="ot">=</span> <span class="fu">dir</span>(dir_data_europe, <span class="st">".*</span><span class="sc">\\</span><span class="st">.nc$"</span>, <span class="at">full.names =</span> T)</span>
-<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a>Also, in order to see how things are working with a NetCDF with many timestamps, I include a **raster for Austria for the sum of Sun Duration**. It is one single NetCDF for 2023, but includes all the months up to October for 2023.</span>
-<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a>dir_data_austria <span class="ot">=</span> <span class="fu">here</span>(<span class="st">"data_raw/raster/sun_austria"</span>)</span>
-<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a>file_to_data_austria <span class="ot">=</span> <span class="fu">dir</span>(dir_data_austria, <span class="st">".*</span><span class="sc">\\</span><span class="st">.nc$"</span>, <span class="at">full.names =</span> T)</span>
-<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a>The outline of Austria</span>
-<span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a>au <span class="ot">=</span> rajudas<span class="sc">::</span>oe</span>
-<span id="cb29-46"><a href="#cb29-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-48"><a href="#cb29-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-49"><a href="#cb29-49" aria-hidden="true" tabindex="-1"></a><span class="fu">### Terra</span></span>
-<span id="cb29-50"><a href="#cb29-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-51"><a href="#cb29-51" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">The docs</span><span class="co">](https://rspatial.org/pkg/2-classes.html)</span></span>
-<span id="cb29-52"><a href="#cb29-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-53"><a href="#cb29-53" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `SpatRaster`-class</span></span>
-<span id="cb29-54"><a href="#cb29-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-55"><a href="#cb29-55" aria-hidden="true" tabindex="-1"></a>From <span class="co">[</span><span class="ot">the docs</span><span class="co">](https://rspatial.org/pkg/2-classes.html)</span>:</span>
-<span id="cb29-56"><a href="#cb29-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-57"><a href="#cb29-57" aria-hidden="true" tabindex="-1"></a>*A SpatRaster represents multi-layer (variable) raster data. A SpatRaster object stores a number of fundamental parameters that describe it. These include the number of columns and rows, the coordinates of its spatial extent ('bounding box'), and the coordinate reference system (the 'map projection'). In addition, a SpatRaster can store information about the file(s) in which the raster cell values are stored (if there are such files) --- as raster cell values can also be held in memory.*</span>
-<span id="cb29-58"><a href="#cb29-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-59"><a href="#cb29-59" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Reading a single raster</span></span>
-<span id="cb29-60"><a href="#cb29-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-61"><a href="#cb29-61" aria-hidden="true" tabindex="-1"></a>Lets use the data on monthly Sun duration over Austria</span>
-<span id="cb29-62"><a href="#cb29-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-65"><a href="#cb29-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-66"><a href="#cb29-66" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb29-67"><a href="#cb29-67" aria-hidden="true" tabindex="-1"></a>raster_austria_terra <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">rast</span>(file_to_data_austria)</span>
-<span id="cb29-68"><a href="#cb29-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-69"><a href="#cb29-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-70"><a href="#cb29-70" aria-hidden="true" tabindex="-1"></a><span class="fu">###### Get some attributes</span></span>
-<span id="cb29-71"><a href="#cb29-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-74"><a href="#cb29-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-75"><a href="#cb29-75" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb29-76"><a href="#cb29-76" aria-hidden="true" tabindex="-1"></a><span class="co"># does it have values</span></span>
-<span id="cb29-77"><a href="#cb29-77" aria-hidden="true" tabindex="-1"></a><span class="fu">hasValues</span>(raster_austria_terra)</span>
-<span id="cb29-78"><a href="#cb29-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-79"><a href="#cb29-79" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the resolution</span></span>
-<span id="cb29-80"><a href="#cb29-80" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(raster_austria_terra)</span>
-<span id="cb29-81"><a href="#cb29-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-82"><a href="#cb29-82" aria-hidden="true" tabindex="-1"></a><span class="co"># the dimensions</span></span>
-<span id="cb29-83"><a href="#cb29-83" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(raster_austria_terra)</span>
-<span id="cb29-84"><a href="#cb29-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-85"><a href="#cb29-85" aria-hidden="true" tabindex="-1"></a><span class="co"># the number of layers</span></span>
-<span id="cb29-86"><a href="#cb29-86" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">nlyr</span>(raster_austria_terra)</span>
-<span id="cb29-87"><a href="#cb29-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-88"><a href="#cb29-88" aria-hidden="true" tabindex="-1"></a><span class="do">## extract one layer (one month - Feb)</span></span>
-<span id="cb29-89"><a href="#cb29-89" aria-hidden="true" tabindex="-1"></a>feb <span class="ot">=</span> raster_austria_terra[[<span class="dv">2</span>]]</span>
-<span id="cb29-90"><a href="#cb29-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-91"><a href="#cb29-91" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(feb, <span class="at">main =</span> <span class="st">"Sun over Austrian in Feb 2023"</span>)</span>
-<span id="cb29-92"><a href="#cb29-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-93"><a href="#cb29-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-94"><a href="#cb29-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-95"><a href="#cb29-95" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Multi-Layer Statistics</span></span>
-<span id="cb29-96"><a href="#cb29-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-97"><a href="#cb29-97" aria-hidden="true" tabindex="-1"></a>When reading a netcdf you often end up with many layers (which you can check with the <span class="in">`nlyr`</span>-function)</span>
-<span id="cb29-98"><a href="#cb29-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-99"><a href="#cb29-99" aria-hidden="true" tabindex="-1"></a><span class="fu">###### Mean, max... of multiple Raster</span></span>
-<span id="cb29-100"><a href="#cb29-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-101"><a href="#cb29-101" aria-hidden="true" tabindex="-1"></a>There are several options of summarising data over the layers. They always return a <span class="in">`SpatRaster`</span>-Object. Meaning the output will have the same dimension and resolution as any of the layer, but will be just a single layer!</span>
-<span id="cb29-102"><a href="#cb29-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-105"><a href="#cb29-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-106"><a href="#cb29-106" aria-hidden="true" tabindex="-1"></a><span class="co"># mean 1: the normal mean-function</span></span>
-<span id="cb29-107"><a href="#cb29-107" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">mean</span>(raster_austria_terra)</span>
-<span id="cb29-108"><a href="#cb29-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-109"><a href="#cb29-109" aria-hidden="true" tabindex="-1"></a><span class="co"># the terra app-function</span></span>
-<span id="cb29-110"><a href="#cb29-110" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">app</span>(raster_austria_terra, <span class="st">"mean"</span>)</span>
-<span id="cb29-111"><a href="#cb29-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-112"><a href="#cb29-112" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">all.equal</span>(m1, m2)</span>
-<span id="cb29-113"><a href="#cb29-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-114"><a href="#cb29-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-115"><a href="#cb29-115" aria-hidden="true" tabindex="-1"></a><span class="fu">###### For each Pixel find the month in which it was the highest</span></span>
-<span id="cb29-116"><a href="#cb29-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-119"><a href="#cb29-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-120"><a href="#cb29-120" aria-hidden="true" tabindex="-1"></a>r <span class="ot">=</span> <span class="fu">rast</span>(<span class="st">"au.tif"</span>)</span>
-<span id="cb29-121"><a href="#cb29-121" aria-hidden="true" tabindex="-1"></a>when_max_sun <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">app</span>(r, which.max)</span>
-<span id="cb29-122"><a href="#cb29-122" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(when_max_sun) <span class="ot">=</span> month.name[<span class="fu">values</span>(when_max_sun)]</span>
-<span id="cb29-123"><a href="#cb29-123" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(when_max_sun)</span>
-<span id="cb29-124"><a href="#cb29-124" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(oe, <span class="at">add =</span> T)</span>
-<span id="cb29-125"><a href="#cb29-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-126"><a href="#cb29-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-127"><a href="#cb29-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-128"><a href="#cb29-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-129"><a href="#cb29-129" aria-hidden="true" tabindex="-1"></a><span class="fu">### Stars</span></span>
-<span id="cb29-130"><a href="#cb29-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-131"><a href="#cb29-131" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Reading a single raster</span></span>
-<span id="cb29-132"><a href="#cb29-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-135"><a href="#cb29-135" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-136"><a href="#cb29-136" aria-hidden="true" tabindex="-1"></a>raster_austria_stars <span class="ot">=</span> stars<span class="sc">::</span><span class="fu">read_ncdf</span>(file_to_data_austria)</span>
-<span id="cb29-137"><a href="#cb29-137" aria-hidden="true" tabindex="-1"></a>index_max <span class="ot">=</span> <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">all</span>(<span class="fu">is.na</span>(x)), <span class="cn">NA</span>, <span class="fu">which.max</span>(x))</span>
-<span id="cb29-138"><a href="#cb29-138" aria-hidden="true" tabindex="-1"></a>when_max_sun_stars <span class="ot">=</span> <span class="fu">st_apply</span>(raster_austria_stars, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>), index_max)</span>
-<span id="cb29-139"><a href="#cb29-139" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(when_max_sun_stars, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightgreen"</span>, <span class="st">"brown"</span>, <span class="st">"white"</span>, <span class="st">"darkgreen"</span>))</span>
-<span id="cb29-140"><a href="#cb29-140" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(oe <span class="sc">%&gt;%</span> <span class="fu">st_transform</span>(<span class="fu">st_crs</span>(when_max_sun_stars)), <span class="at">add =</span> T)</span>
-<span id="cb29-141"><a href="#cb29-141" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-142"><a href="#cb29-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-143"><a href="#cb29-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-144"><a href="#cb29-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-145"><a href="#cb29-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-146"><a href="#cb29-146" aria-hidden="true" tabindex="-1"></a><span class="fu">## PURRR</span></span>
-<span id="cb29-147"><a href="#cb29-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-148"><a href="#cb29-148" aria-hidden="true" tabindex="-1"></a><span class="fu">### Iterate over columns of a dataframe</span></span>
-<span id="cb29-149"><a href="#cb29-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-152"><a href="#cb29-152" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-153"><a href="#cb29-153" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb29-154"><a href="#cb29-154" aria-hidden="true" tabindex="-1"></a>                <span class="at">b =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb29-155"><a href="#cb29-155" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb29-156"><a href="#cb29-156" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">s =</span> <span class="fu">sum</span>(a, b))</span>
-<span id="cb29-157"><a href="#cb29-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-158"><a href="#cb29-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-159"><a href="#cb29-159" aria-hidden="true" tabindex="-1"></a><span class="co"># the naming of the function arguments is important. They have to match the names of the cols of the df!!</span></span>
-<span id="cb29-160"><a href="#cb29-160" aria-hidden="true" tabindex="-1"></a>res <span class="ot">=</span> <span class="fu">pmap</span>(df, <span class="cf">function</span>(a,b,s){</span>
-<span id="cb29-161"><a href="#cb29-161" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(a, <span class="st">" + "</span>, b, <span class="st">" = "</span>, s)</span>
-<span id="cb29-162"><a href="#cb29-162" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb29-163"><a href="#cb29-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-164"><a href="#cb29-164" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(res)</span>
-<span id="cb29-165"><a href="#cb29-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-166"><a href="#cb29-166" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also unname the dataframe|tibble and name them anyhow</span></span>
-<span id="cb29-167"><a href="#cb29-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-168"><a href="#cb29-168" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb26" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># R Geo</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rajudas)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>Loading packages</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working with rasters</span></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="fu">### The data</span></span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>For learning purposes I downloaded data on the sun duration from the **CMSAF for europe in 2020 to October 2023*. The data can be found after login <span class="co">[</span><span class="ot">here</span><span class="co">](https://wui.cmsaf.eu/safira/action/viewProduktSearch)</span>. It's the SARAH-3 product. It's one NetCDF per Month. So it could also just be a tif. </span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>dir_data_europe <span class="ot">=</span> <span class="fu">here</span>(<span class="st">"data_raw/raster/sun_europe"</span>)</span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>files_to_data_europe <span class="ot">=</span> <span class="fu">dir</span>(dir_data_europe, <span class="st">".*</span><span class="sc">\\</span><span class="st">.nc$"</span>, <span class="at">full.names =</span> T)</span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>Also, in order to see how things are working with a NetCDF with many timestamps, I include a **raster for Austria for the sum of Sun Duration**. It is one single NetCDF for 2023, but includes all the months up to October for 2023.</span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>dir_data_austria <span class="ot">=</span> <span class="fu">here</span>(<span class="st">"data_raw/raster/sun_austria"</span>)</span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>file_to_data_austria <span class="ot">=</span> <span class="fu">dir</span>(dir_data_austria, <span class="st">".*</span><span class="sc">\\</span><span class="st">.nc$"</span>, <span class="at">full.names =</span> T)</span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a>The outline of Austria</span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a>au <span class="ot">=</span> rajudas<span class="sc">::</span>oe</span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a><span class="fu">### Terra</span></span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">The docs</span><span class="co">](https://rspatial.org/pkg/2-classes.html)</span></span>
+<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `SpatRaster`-class</span></span>
+<span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a>From <span class="co">[</span><span class="ot">the docs</span><span class="co">](https://rspatial.org/pkg/2-classes.html)</span>:</span>
+<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a>*A SpatRaster represents multi-layer (variable) raster data. A SpatRaster object stores a number of fundamental parameters that describe it. These include the number of columns and rows, the coordinates of its spatial extent ('bounding box'), and the coordinate reference system (the 'map projection'). In addition, a SpatRaster can store information about the file(s) in which the raster cell values are stored (if there are such files) --- as raster cell values can also be held in memory.*</span>
+<span id="cb26-58"><a href="#cb26-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-59"><a href="#cb26-59" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Reading a single raster</span></span>
+<span id="cb26-60"><a href="#cb26-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-61"><a href="#cb26-61" aria-hidden="true" tabindex="-1"></a>Lets use the data on monthly Sun duration over Austria</span>
+<span id="cb26-62"><a href="#cb26-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-65"><a href="#cb26-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-66"><a href="#cb26-66" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb26-67"><a href="#cb26-67" aria-hidden="true" tabindex="-1"></a>raster_austria_terra <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">rast</span>(file_to_data_austria)</span>
+<span id="cb26-68"><a href="#cb26-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-69"><a href="#cb26-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-70"><a href="#cb26-70" aria-hidden="true" tabindex="-1"></a><span class="fu">###### Get some attributes</span></span>
+<span id="cb26-71"><a href="#cb26-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-74"><a href="#cb26-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-75"><a href="#cb26-75" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-76"><a href="#cb26-76" aria-hidden="true" tabindex="-1"></a><span class="co"># does it have values</span></span>
+<span id="cb26-77"><a href="#cb26-77" aria-hidden="true" tabindex="-1"></a><span class="fu">hasValues</span>(raster_austria_terra)</span>
+<span id="cb26-78"><a href="#cb26-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-79"><a href="#cb26-79" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the resolution</span></span>
+<span id="cb26-80"><a href="#cb26-80" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(raster_austria_terra)</span>
+<span id="cb26-81"><a href="#cb26-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-82"><a href="#cb26-82" aria-hidden="true" tabindex="-1"></a><span class="co"># the dimensions</span></span>
+<span id="cb26-83"><a href="#cb26-83" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(raster_austria_terra)</span>
+<span id="cb26-84"><a href="#cb26-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-85"><a href="#cb26-85" aria-hidden="true" tabindex="-1"></a><span class="co"># the number of layers</span></span>
+<span id="cb26-86"><a href="#cb26-86" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">nlyr</span>(raster_austria_terra)</span>
+<span id="cb26-87"><a href="#cb26-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-88"><a href="#cb26-88" aria-hidden="true" tabindex="-1"></a><span class="do">## extract one layer (one month - Feb)</span></span>
+<span id="cb26-89"><a href="#cb26-89" aria-hidden="true" tabindex="-1"></a>feb <span class="ot">=</span> raster_austria_terra[[<span class="dv">2</span>]]</span>
+<span id="cb26-90"><a href="#cb26-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-91"><a href="#cb26-91" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(feb, <span class="at">main =</span> <span class="st">"Sun over Austrian in Feb 2023"</span>)</span>
+<span id="cb26-92"><a href="#cb26-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-93"><a href="#cb26-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-94"><a href="#cb26-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-95"><a href="#cb26-95" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Multi-Layer Statistics</span></span>
+<span id="cb26-96"><a href="#cb26-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-97"><a href="#cb26-97" aria-hidden="true" tabindex="-1"></a>When reading a netcdf you often end up with many layers (which you can check with the <span class="in">`nlyr`</span>-function)</span>
+<span id="cb26-98"><a href="#cb26-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-99"><a href="#cb26-99" aria-hidden="true" tabindex="-1"></a><span class="fu">###### Mean, max... of multiple Raster</span></span>
+<span id="cb26-100"><a href="#cb26-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-101"><a href="#cb26-101" aria-hidden="true" tabindex="-1"></a>There are several options of summarising data over the layers. They always return a <span class="in">`SpatRaster`</span>-Object. Meaning the output will have the same dimension and resolution as any of the layer, but will be just a single layer!</span>
+<span id="cb26-102"><a href="#cb26-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-105"><a href="#cb26-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-106"><a href="#cb26-106" aria-hidden="true" tabindex="-1"></a><span class="co"># mean 1: the normal mean-function</span></span>
+<span id="cb26-107"><a href="#cb26-107" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">mean</span>(raster_austria_terra)</span>
+<span id="cb26-108"><a href="#cb26-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-109"><a href="#cb26-109" aria-hidden="true" tabindex="-1"></a><span class="co"># the terra app-function</span></span>
+<span id="cb26-110"><a href="#cb26-110" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">app</span>(raster_austria_terra, <span class="st">"mean"</span>)</span>
+<span id="cb26-111"><a href="#cb26-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-112"><a href="#cb26-112" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">all.equal</span>(m1, m2)</span>
+<span id="cb26-113"><a href="#cb26-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-114"><a href="#cb26-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-115"><a href="#cb26-115" aria-hidden="true" tabindex="-1"></a><span class="fu">###### For each Pixel find the month in which it was the highest</span></span>
+<span id="cb26-116"><a href="#cb26-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-119"><a href="#cb26-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-120"><a href="#cb26-120" aria-hidden="true" tabindex="-1"></a>r <span class="ot">=</span> <span class="fu">rast</span>(<span class="st">"au.tif"</span>)</span>
+<span id="cb26-121"><a href="#cb26-121" aria-hidden="true" tabindex="-1"></a>when_max_sun <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">app</span>(r, which.max)</span>
+<span id="cb26-122"><a href="#cb26-122" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(when_max_sun) <span class="ot">=</span> month.name[<span class="fu">values</span>(when_max_sun)]</span>
+<span id="cb26-123"><a href="#cb26-123" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(when_max_sun)</span>
+<span id="cb26-124"><a href="#cb26-124" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(oe, <span class="at">add =</span> T)</span>
+<span id="cb26-125"><a href="#cb26-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-126"><a href="#cb26-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-127"><a href="#cb26-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-128"><a href="#cb26-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-129"><a href="#cb26-129" aria-hidden="true" tabindex="-1"></a><span class="fu">### Stars</span></span>
+<span id="cb26-130"><a href="#cb26-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-131"><a href="#cb26-131" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Reading a single raster</span></span>
+<span id="cb26-132"><a href="#cb26-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-135"><a href="#cb26-135" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-136"><a href="#cb26-136" aria-hidden="true" tabindex="-1"></a>raster_austria_stars <span class="ot">=</span> stars<span class="sc">::</span><span class="fu">read_ncdf</span>(file_to_data_austria)</span>
+<span id="cb26-137"><a href="#cb26-137" aria-hidden="true" tabindex="-1"></a>index_max <span class="ot">=</span> <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">all</span>(<span class="fu">is.na</span>(x)), <span class="cn">NA</span>, <span class="fu">which.max</span>(x))</span>
+<span id="cb26-138"><a href="#cb26-138" aria-hidden="true" tabindex="-1"></a>when_max_sun_stars <span class="ot">=</span> <span class="fu">st_apply</span>(raster_austria_stars, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>), index_max)</span>
+<span id="cb26-139"><a href="#cb26-139" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(when_max_sun_stars, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightgreen"</span>, <span class="st">"brown"</span>, <span class="st">"white"</span>, <span class="st">"darkgreen"</span>))</span>
+<span id="cb26-140"><a href="#cb26-140" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(oe <span class="sc">%&gt;%</span> <span class="fu">st_transform</span>(<span class="fu">st_crs</span>(when_max_sun_stars)), <span class="at">add =</span> T)</span>
+<span id="cb26-141"><a href="#cb26-141" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-142"><a href="#cb26-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-143"><a href="#cb26-143" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

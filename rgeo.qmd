@@ -1,6 +1,4 @@
-# R
-
-Loading packages
+# R Geo
 
 ```{r}
 #| message: false
@@ -13,6 +11,8 @@ library(terra)
 library(rajudas)
 library(jsonlite)
 ```
+
+Loading packages
 
 ## Working with rasters
 
@@ -79,7 +79,6 @@ feb = raster_austria_terra[[2]]
 plot(feb, main = "Sun over Austrian in Feb 2023")
 ```
 
-
 ##### Multi-Layer Statistics
 
 When reading a netcdf you often end up with many layers (which you can check with the `nlyr`-function)
@@ -110,6 +109,18 @@ plot(oe, add = T)
 
 
 
+### Terra and netCDf
+
+#### Get dimension values
+
+- for the time-dimension you can simply call 
+
+```{r}
+# time(nc_raster)
+```
+
+
+
 ### Stars
 
 #### Reading a single raster
@@ -122,35 +133,12 @@ plot(when_max_sun_stars, col = c("lightgreen", "brown", "white", "darkgreen"))
 plot(oe %>% st_transform(st_crs(when_max_sun_stars)), add = T)
 ```
 
-
-
-
-# PURRR
-
-## Iterate over columns of a dataframe
+## Getting geodata in R
 
 ```{r}
-df = data.frame(a = c(1, 2, 3),
-                b = c(4, 5, 6)) %>%
-  rowwise() %>%
-  mutate(s = sum(a, b))
-
-
-# the naming of the function arguments is important. They have to match the names of the cols of the df!!
-res = pmap(df, function(a,b,s){
-  paste0(a, " + ", b, " = ", s)
-})
-
-print(res)
-
-# you can also unname the dataframe|tibble and name them anyhow
+library(geodata)
+library(eurostat)
+library(giscoR)
 ```
-
-
-
-
-
-
-
 
 

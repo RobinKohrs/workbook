@@ -9,6 +9,7 @@ book:
     - index.qmd
     - dataviz.qmd
     - r.qmd
+    - rgeo.qmd
     - qgis.qmd
     - css.qmd
     - datawrapper.qmd

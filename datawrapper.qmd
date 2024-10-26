@@ -1,1 +1,44 @@
 # Datawrapper
+
+## DatawrappR
+
+```{r}
+library(DatawRappr)
+library(tidyverse)
+```
+
+### Create an empty chart and set its type and title
+
+You can find all the chart-types in the `help("dw_create_chart")`
+
+```{r}
+chart_id = "EKChI"
+```
+
+### Set some data
+```{r}
+dw_data_to_chart(data.frame(party = c(1,2,3), perc=c(30,20,10)), chart_id)
+```
+
+
+### Get its metadata
+
+```{r}
+chart_md = dw_retrieve_chart_metadata(chart_id)
+```
+
+Especially the [visuals](https://developer.datawrapper.de/docs/chart-properties) are interesting! Here are all the Visualize properties for a scatterplot
+
+```{r}
+visual_props = chart_md$content$metadata$visualize
+names(visual_props) %>% sort
+```
+
+### add some bars
+
+Look into the `custom-area-fills`
+
+```{r}
+dw_edit_chart(chart_id, visualize = list("custom-area-fills" = list(c("2,2,3,3,4,4@color:black"))))
+```
+
